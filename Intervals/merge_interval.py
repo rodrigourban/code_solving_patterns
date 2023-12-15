@@ -71,6 +71,6 @@ assert solve([Interval(1, 4), Interval(2, 6), Interval(8, 11), Interval(
 
 
 """
-Time complexity: 
-Space complexity:
+Time complexity: O(N*logN)
+Space complexity: O(N)
 """
