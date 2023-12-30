@@ -26,7 +26,7 @@ Output: [1, 2, 3, 4, 5, 6]
 
 def solve(lst: [int]) -> [[]]:
     """
-    To solve this:
+    To solve this: Cyclic Sort
     we iterate the array one number at a time, and if the current number we are iterating is
     not at the correct index, we swap it with the number at its correct index. This way we
     will go through all numbers and place them in their correct indices, hence, sorting the whole array.
