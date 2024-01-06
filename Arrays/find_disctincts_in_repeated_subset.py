@@ -8,11 +8,30 @@ Output: [[], [1], [3], [1,3], [3,3], [1,3,3]]
 Example 2:
 
 Input: [1, 5, 3, 3]
-Output: [[], [1], [5], [1,5], [3], [1,3], [5,3], [1,5,3], [3,3], [1,3,3], [3,3,5], [1,5,3,3]]
+Output: [[], [1], [3], [1, 3], [3, 3], [1, 3, 3], [5], [1, 5], [3, 5], [1, 3, 5], [3, 3, 5], [1, 3, 3, 5]]
 """
 
 
-def solve(nums: list[int]) -> list[list[int]]:
+def solve_1(nums: list[int]) -> list[list[int]]:
+    sorted_array = sorted(nums)
+    subsets: list[list[int]] = [[]]
+    start, end = 0, 0
+    for number in sorted_array:
+        to_append: list[list[int]] = []
+        if number in subsets[start]:
+            # repeated, only add last combinations
+            for i in range(start, end):
+                to_append.append([*subsets[i], number])
+        else:
+            for current in subsets:
+                to_append.append([*current, number])
+        subsets.extend(to_append)
+        start = len(subsets) - len(to_append)
+        end = len(subsets)
+    return subsets
+
+
+def solve_2(nums: list[int]) -> list[list[int]]:
     """
     To solve this: Breadth First Search (BFS)
     Sort all numbers of the given set. This will ensure that all duplicate numbers are next to each other.
@@ -42,8 +61,12 @@ def solve(nums: list[int]) -> list[list[int]]:
     return subsets
 
 
-assert solve([1, 3, 3]) == [[], [1], [3], [1, 3], [3, 3], [1, 3, 3]]
-assert solve([1, 5, 3, 3]) == [[], [1], [3], [1, 3], [3, 3], [1, 3, 3], [
+assert solve_1([1, 3, 3]) == [[], [1], [3], [1, 3], [3, 3], [1, 3, 3]]
+assert solve_1([1, 5, 3, 3]) == [[], [1], [3], [1, 3], [3, 3], [1, 3, 3], [
+    5], [1, 5], [3, 5], [1, 3, 5], [3, 3, 5], [1, 3, 3, 5]]
+
+assert solve_2([1, 3, 3]) == [[], [1], [3], [1, 3], [3, 3], [1, 3, 3]]
+assert solve_2([1, 5, 3, 3]) == [[], [1], [3], [1, 3], [3, 3], [1, 3, 3], [
     5], [1, 5], [3, 5], [1, 3, 5], [3, 3, 5], [1, 3, 3, 5]]
 
 

@@ -4,11 +4,11 @@ Given a string, find all of its permutations preserving the character sequence b
 Example 1:
 
 Input: "ad52"
-Output: "ad52", "Ad52", "aD52", "AD52" 
+Output: ["ad52", "Ad52", "aD52", "AD52"]
 Example 2:
 
 Input: "ab7c"
-Output: "ab7c", "Ab7c", "aB7c", "AB7c", "ab7C", "Ab7C", "aB7C", "AB7C"
+Output: ["ab7c", "Ab7c", "aB7c", "AB7c", "ab7C", "Ab7C", "aB7C", "AB7C"]
 """
 
 
@@ -36,9 +36,9 @@ def solve(word: str) -> list[str]:
         if word[i].isalpha():
             ans_length = len(ans)
             for j in range(ans_length):
-                swapped_c = ans[j][i:i+1].swapcase()
+                swapped_c = ans[j][i].swapcase()
                 second_c = ans[j][i+1:]
-                ans.append(ans[j][0:i] + swapped_c + second_c)
+                ans.append(f'{ans[j][0:i]}{swapped_c}{second_c}')
 
     print("Answer is: ", ans)
     return ans
