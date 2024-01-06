@@ -2,11 +2,11 @@
 """
 
 
-def solve(nums: [int]) -> []:
+def solve(nums: list[int]) -> list[int]:
     """
     To solve this:
     """
-    ans = 0
+    ans = []
 
     print("Answer is: ", ans)
     return ans

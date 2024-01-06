@@ -1,5 +1,3 @@
-import time
-import random
 """
 We are given an array containing 'n' objects. Each object, when created, was assigned
 a unique number from 1 to 'n' based on their creation sequence. This means that the object 
@@ -24,10 +22,10 @@ Output: [1, 2, 3, 4, 5, 6]
 """
 
 
-def solve(lst: [int]) -> [[]]:
+def solve(lst: list[int]) -> list[int]:
     """
     To solve this: Cyclic Sort
-    we iterate the array one number at a time, and if the current number we are iterating is
+    We iterate the array one number at a time, and if the current number we are iterating is
     not at the correct index, we swap it with the number at its correct index. This way we
     will go through all numbers and place them in their correct indices, hence, sorting the whole array.
     """

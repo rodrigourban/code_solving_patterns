@@ -22,7 +22,7 @@ Explanation: Since all the given intervals overlap, we merged them into one.
 
 
 class Interval:
-    def __init__(self, start, end) -> None:
+    def __init__(self, start: int, end: int) -> None:
         self.start = start
         self.end = end
 
@@ -30,9 +30,9 @@ class Interval:
         return f'[{str(self.start)}, {str(self.end)}]'
 
 
-def solve(intervals) -> [[]]:
+def solve(intervals: list[Interval]) -> list[Interval]:
     """
-    To solve this:
+    To solve this: Merge Intervals
     1. Sort the intervals on the start time to ensure a.start <= b.start
     2. If 'a' overlaps 'b' (i.e. b.start <= a.end), we need to merge them into a new interval 'c' such that:
         c.start = a.start
@@ -43,7 +43,7 @@ def solve(intervals) -> [[]]:
         return intervals
 
     intervals.sort(key=lambda x: x.start)
-    merged = []
+    merged: list[Interval] = []
     start = intervals[0].start
     end = intervals[0].end
 
